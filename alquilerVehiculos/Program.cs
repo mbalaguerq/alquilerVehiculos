@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -56,10 +57,37 @@ namespace alquilerVehiculos
             contratoAlquiler1.FechaInicio = DateTime.Parse("23/01/2023");
             contratoAlquiler1.FechaFin = DateTime.Parse("30/01/2023");
 
-            Console.WriteLine(cliente1);//ejecutarà el override.
+           // Console.WriteLine(cliente1);//ejecutarà el override.
 
-            Console.WriteLine(contratoAlquiler1.Cliente.Nombre);//Aquí mostrará el nom del client de l'objecte 
+            //Console.WriteLine(contratoAlquiler1.Cliente.Nombre);//Aquí mostrará el nom del client de l'objecte 
             //contrato alquiler1
+
+            //creamos el objeto VehiculosRenting
+            VehiculosRenting vehiculosRenting = new VehiculosRenting();
+            //asignamos sus atributos.
+            vehiculosRenting.Nif = "11111111A";
+            vehiculosRenting.Nombre = "Comercial Motera";
+
+            //Añadimos dos objetos al arraylist, que a su vez, es un atributo de VehiculosRenting.
+            vehiculosRenting.ListaClientes.Add(cliente1);
+            vehiculosRenting.ListaClientes.Add(cliente2);
+
+            Flota flota = new Flota();
+            flota.addVehiculos(coche1);
+            flota.addVehiculos(moto1);
+            flota.addVehiculos(camion1);
+
+            flota.removeVeh("a");
+
+            
+            //ejemplo de como poner objetos dentro de Arraylist
+            ArrayList cosas=new ArrayList(25);//25* el arraylist es dinámic però li podem
+            //dir quants obj. aprox per que reservi un espai de memòria en el moment de crear-se.
+            //cosas.Add(cliente1);
+            //cosas.Add(cliente2);
+            //Console.WriteLine(cosas.Count);
+            
+
 
 
 
