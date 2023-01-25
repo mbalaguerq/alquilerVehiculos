@@ -27,14 +27,15 @@ namespace alquilerVehiculos
         {
             vehiculos.Add(veh);
         }
-
-        public void removeVeh(string matricula)
+        public void removeVehiculo(string matricula) 
         {
-            //por cada objeto vehiculo, en el array vehiculos
-            foreach(vehiculo veh in vehiculos)
+            foreach (vehiculo veh in vehiculos)
             {
-                Console.WriteLine(veh.Matricula);
-            }
+                if(veh.Matricula.Equals(matricula)) 
+                { 
+                vehiculos.Remove(veh);
+                }
+            }    
         }
     }
 }

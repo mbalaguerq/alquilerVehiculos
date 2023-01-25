@@ -77,7 +77,7 @@ namespace alquilerVehiculos
             flota.addVehiculos(moto1);
             flota.addVehiculos(camion1);
 
-            flota.removeVeh("a");
+            flota.removeVehiculo("3333yyy");
 
             
             //ejemplo de como poner objetos dentro de Arraylist
