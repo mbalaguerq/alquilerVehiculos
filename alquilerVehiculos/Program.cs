@@ -11,6 +11,7 @@ namespace alquilerVehiculos
     {
         static void Main(string[] args)
         {
+            /*
             coche coche1=new coche();
             coche1.Matricula="2418JML";
             coche1.Marca = "Nissan";
@@ -57,7 +58,8 @@ namespace alquilerVehiculos
             contratoAlquiler1.FechaInicio = DateTime.Parse("23/01/2023");
             contratoAlquiler1.FechaFin = DateTime.Parse("30/01/2023");
 
-           // Console.WriteLine(cliente1);//ejecutarà el override.
+           // Console.WriteLine(cliente1);//ejecutarà el override que hemos puesto en el
+           //constructor de la clase cliente.
 
             //Console.WriteLine(contratoAlquiler1.Cliente.Nombre);//Aquí mostrará el nom del client de l'objecte 
             //contrato alquiler1
@@ -72,13 +74,32 @@ namespace alquilerVehiculos
             vehiculosRenting.ListaClientes.Add(cliente1);
             vehiculosRenting.ListaClientes.Add(cliente2);
 
+
+            
+            //Añadir vehiculos a la flota.
+            //Creamos el objeto Flota
             Flota flota = new Flota();
-            flota.addVehiculos(coche1);
+
+
+            /*       
+            flota.addVehiculos(coche1);//Llamamos al método addVehiulos de la clase flota
             flota.addVehiculos(moto1);
             flota.addVehiculos(camion1);
 
-            flota.removeVehiculo("3333yyy");
+            flota.removeVehiculo("3333yyy");//Llamamos al método removeVehiculos de la clase flota
 
+            //Creo un array list flota1, y llamo al método que me devuelve un ArrayList.
+            //recojo el arraylist flota y lo paso a otro arraylist
+            ArrayList flota1 = flota.getFlota();
+            //Recorro flota1
+            foreach(vehiculo v in flota1)
+            {
+                if(v is coche)
+                {
+                    Console.WriteLine(v.Matricula);
+                }
+                  
+            }
             
             //ejemplo de como poner objetos dentro de Arraylist
             ArrayList cosas=new ArrayList(25);//25* el arraylist es dinámic però li podem
@@ -86,9 +107,18 @@ namespace alquilerVehiculos
             //cosas.Add(cliente1);
             //cosas.Add(cliente2);
             //Console.WriteLine(cosas.Count);
-            
+            */
+
+            Aplicacio app = new Aplicacio();
+            app.Inici();
 
 
+
+            //exercici:
+            //menu 3 opcions
+            //1 Afegir Vehicles
+            //2 borrar vehicle
+            //3 llistar vehicles de la flota
 
 
         }

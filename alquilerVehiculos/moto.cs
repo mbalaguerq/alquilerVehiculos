@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace alquilerVehiculos
 {
+    //clase moto que hereda de vehículo
     internal class moto : vehiculo
     {
         private int cc;

@@ -14,7 +14,6 @@ namespace alquilerVehiculos
         //creem un arraylist on emmagazemar els objectes "clients";
         //1-Lo declaramos como atributo de VehiculosRenting
         private ArrayList listaClientes;
-
         private ArrayList flotas;
         private ArrayList agencias;
 
