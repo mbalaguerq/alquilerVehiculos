@@ -17,15 +17,11 @@ namespace alquilerVehiculos
             vehiculos= new ArrayList();
         }
         public string NombreZona { get => nombreZona; set => nombreZona = value; }
-
+        
         //Si hacemos un método para añadir clientes, podemos prescindir del método get.
         //En un Arraylist, no se utiliza el Get/Set
         // public ArrayList Vehiculos { get => vehiculos;}
-        //Método getFlota, devuelve el arraylist vehiculos 
-        public ArrayList getFlota()
-        {
-            return vehiculos;
-        }
+
 
 
         public void addVehiculos (vehiculo veh)

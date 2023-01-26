@@ -14,10 +14,6 @@ namespace alquilerVehiculos
 
         public void Inici()
         {
-            
-
-
-            
 
             bool salir = false;
             string opcio;
@@ -60,7 +56,6 @@ namespace alquilerVehiculos
                     BaixaVehicle(flota);
                     break;
                 case "3":
-
                     LlistaVehicle();
                     break;
                 case "4":
@@ -103,22 +98,27 @@ namespace alquilerVehiculos
         void BaixaVehicle(Flota flota)
         {
             Console.WriteLine("Introdueixi la matrícula del vehicle: ");
-            string matri = Console.ReadLine(); 
+            string matri = Console.ReadLine();
 
-            foreach(Flota  in flota  )
+            if (flota.removeVehiculo(matri))
             {
-                if (veh.Matricula.Equals(matri))
-                {
-                    Flota.Remove(veh);
-                                          
-                    return true;//si el troba retornem true
-                }
+                Console.WriteLine("vehicle amb matrícula" + matri + "eliminat correctament");
             }
-            return false;//si no troba la matrícula retornem false
-        }
-    }
-        }
+            else
+            {
+                Console.WriteLine("El vehicle no existeix.");
 
+            }
+        }
+        void LlistaVehicle(Flota flota)
+        {
+        foreach(vehiculo veh in Flota)
+            {
+
+            }
+        }
     }
-    
+
 }
+    
+
