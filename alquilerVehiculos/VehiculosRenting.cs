@@ -17,6 +17,10 @@ namespace alquilerVehiculos
         private ArrayList flotas;
         private ArrayList agencias;
 
+
+        //2-Ejecutamos el constructor y lo ponemos dentro, puesto que este ArrayList es un 
+        //atributo de Vehiculos Renting.
+
         public VehiculosRenting()
         {
             listaClientes = new ArrayList();
@@ -25,9 +29,16 @@ namespace alquilerVehiculos
         }
         //3-En el espacio program, ya podemos crear el objecto VehiculosRenting
 
-
         public string Nif { get => nif; set => nif = value; }
         public string Nombre { get => nombre; set => nombre = value; }
+
+        
+        //D'aquest mètode retornem la posició. Així, si retorna -1 sabem que no s'ha afegit be. 
+        public int addFlota(Flota flota)
+        {
+            return flotas.Add(flota);
+
+        }
 
         //Cuando un Arraylist está dentro de un objeto como atributo, suele ser sólo de lectura
         //Aquest Arraylist és només de lectura. Així que només farem el Get i no el set
@@ -36,8 +47,7 @@ namespace alquilerVehiculos
         public ArrayList Agencias { get => agencias;}
 
 
-        //2-Ejecutamos el constructor y lo ponemos dentro, puesto que este ArrayList es un 
-        //atributo de Vehiculos Renting.
+        
 
 
     }

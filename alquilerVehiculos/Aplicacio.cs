@@ -56,10 +56,10 @@ namespace alquilerVehiculos
                     BaixaVehicle(flota);
                     break;
                 case "3":
-                    LlistaVehicle();
+                    LlistaVehicle(flota);
                     break;
                 case "4":
-                    MostrarCotxes();
+                    //MostrarCotxes();
                     break;
                 case "0":
                     salir = true;
@@ -112,7 +112,7 @@ namespace alquilerVehiculos
         }
         void LlistaVehicle(Flota flota)
         {
-        foreach(vehiculo veh in Flota)
+        foreach(vehiculo veh in flota.Vehiculos)
             {
 
             }

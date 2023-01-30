@@ -11,6 +11,16 @@ namespace alquilerVehiculos
     {
         static void Main(string[] args)
         {
+
+            Aplicacio app = new Aplicacio();
+            app.Inici();
+
+
+
+
+
+
+
             /*
             coche coche1=new coche();
             coche1.Matricula="2418JML";
@@ -109,8 +119,7 @@ namespace alquilerVehiculos
             //Console.WriteLine(cosas.Count);
             */
 
-            Aplicacio app = new Aplicacio();
-            app.Inici();
+
 
 
 
@@ -119,6 +128,16 @@ namespace alquilerVehiculos
             //1 Afegir Vehicles
             //2 borrar vehicle
             //3 llistar vehicles de la flota
+            //5 Crear contrato de Alquiler
+
+
+
+            //Hay q ue crear una agencia, esa agencia tiene que tener una flota.
+            //Pedir datos de cliente. 
+            //Buscar si existe en clientes.
+            //Pedir vehiculo por ma´trícula
+            //Poner el contrato en un Atrraylist
+            //Listar contratos
 
 
         }

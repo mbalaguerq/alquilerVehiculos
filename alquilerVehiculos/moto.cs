@@ -12,5 +12,10 @@ namespace alquilerVehiculos
         private int cc;
 
         public int Cc { get => cc; set => cc = value; }
+        public override string ToString()
+        {
+            return base.ToString() + " cc: " + cc;
+        }
     }
 }
+

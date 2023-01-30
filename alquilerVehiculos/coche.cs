@@ -13,5 +13,10 @@ namespace alquilerVehiculos
 
         public int Plazas { get => plazas; set => plazas = value; }
         public int Puertas { get => puertas; set => puertas = value; }
+
+        public override string ToString()
+        {
+            return base.ToString() + " plazas: " + plazas + " puertas: " + puertas;
+        }
     }
 }

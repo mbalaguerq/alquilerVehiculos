@@ -17,7 +17,8 @@ namespace alquilerVehiculos
             vehiculos= new ArrayList();
         }
         public string NombreZona { get => nombreZona; set => nombreZona = value; }
-        
+        public ArrayList Vehiculos { get => vehiculos;}
+
         //Si hacemos un método para añadir clientes, podemos prescindir del método get.
         //En un Arraylist, no se utiliza el Get/Set
         // public ArrayList Vehiculos { get => vehiculos;}
@@ -26,17 +27,17 @@ namespace alquilerVehiculos
 
         public void addVehiculos (vehiculo veh)
         {
-            vehiculos.Add(veh);
+            Vehiculos.Add(veh);
         }
 
 
         public bool removeVehiculo(string matricula) 
         {
-            foreach (vehiculo veh in vehiculos)
+            foreach (vehiculo veh in Vehiculos)
             {
                 if(veh.Matricula.Equals(matricula)) 
                 { 
-                vehiculos.Remove(veh);//.Remove borrarà el objeto
+                Vehiculos.Remove(veh);//.Remove borrarà el objeto
                                       //vehiculos.clear Esto borraria el arrayList
                     return true;//si el troba retornem true
                 }
