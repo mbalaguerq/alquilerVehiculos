@@ -33,6 +33,7 @@ namespace alquilerVehiculos
             Console.WriteLine("2. Eliminar vehicle de la flota");
             Console.WriteLine("3. Llistar vehicles");
             Console.WriteLine("4. Llistar cotxes");
+            Console.WriteLine("5. Nou Contracte");
 
         }
         string DemanarOpcioMenu()
@@ -63,7 +64,7 @@ namespace alquilerVehiculos
                     mostrarSoloCoches(vehiculosrenting);
                     break;
                 case "5":
-                    altaContracte(vehiculosrenting,);
+                    altaContracte(vehiculosrenting);
                     break;
                 case "0":
                     salir = true;
@@ -74,7 +75,7 @@ namespace alquilerVehiculos
         }
         void AltaVehicle(VehiculosRenting vehiculosRenting)
         {
-            coche coche1 = new coche();
+            Coche coche1 = new Coche();
             coche1.Matricula = "2418JML";
             coche1.Marca = "Nissan";
             coche1.Model = "Juke";
@@ -82,13 +83,13 @@ namespace alquilerVehiculos
             coche1.Plazas = 5;
 
 
-            moto moto1 = new moto();
+            Moto moto1 = new Moto();
             moto1.Matricula = "9318GXP";
             moto1.Marca = "Ducati";
             moto1.Model = "Panigale R";
             moto1.Cc = 1199;
 
-            camion camion1 = new camion();
+            Camion camion1 = new Camion();
             camion1.Matricula = "3333yyy";
             camion1.Marca = "Mercedes";
             camion1.Model = "k1";
@@ -97,20 +98,36 @@ namespace alquilerVehiculos
             Flota flota = new Flota();
             flota.NombreZona = "Zaragoza";
 
-            Agencia avis = new Agencia();
-            avis.Nombre = "PacoMeralgo";
-            avis.Flota = flota;
+            
 
             flota.addVehiculos(coche1);//Llamamos al método addVehiculos de la clase flota
             flota.addVehiculos(moto1);
             flota.addVehiculos(camion1);
 
-            //preguntar durant la correcció, no sé que fa aquest if else
+            
             if (vehiculosRenting.addFlota(flota) >= 0)
             {
                 Console.WriteLine("\nLa flota se ha añadido correctamente\n");
             }
             else { Console.WriteLine("\nERROR: La flota NO ha añadido correctamente\n"); }
+
+            Cliente cliente1 = new Cliente();
+            cliente1.Nif = "11111111A";
+            cliente1.Nombre = "Josep";
+
+            Cliente cliente2 = new Cliente();
+            cliente2.Nif = "22222222B";
+            cliente2.Nombre = "Ricardo";
+
+            vehiculosRenting.addClient(cliente1);
+            vehiculosRenting.addClient(cliente2);
+
+            Agencia agencia = new Agencia();
+            agencia.Nombre = "Agencia Lepanto";
+            agencia.Flota = flota;
+            vehiculosRenting.addAgencia(agencia);
+
+
         }
         void BaixaVehicle(VehiculosRenting vehiculosRenting)
         {
@@ -137,7 +154,7 @@ namespace alquilerVehiculos
             //Doble bucle. El primer busca dins totes les flotes. El segon dins de tots els vehicles
             foreach (Flota flota in vehiculosRenting.Flotas)
             {
-                foreach (vehiculo veh in flota.getVehiculos())
+                foreach (Vehiculo veh in flota.getVehiculos())
                 {
                     Console.WriteLine(veh.ToString());
                 }
@@ -149,9 +166,9 @@ namespace alquilerVehiculos
             Console.WriteLine();
             foreach (Flota flota in vehiculosRenting.Flotas)
             {
-                foreach (vehiculo vehiculo in flota.getVehiculos())
+                foreach (Vehiculo vehiculo in flota.getVehiculos())
                 {
-                    if (vehiculo is coche)
+                    if (vehiculo is Coche)
                     {
                         Console.WriteLine(vehiculo.ToString());
                     }
@@ -161,13 +178,52 @@ namespace alquilerVehiculos
         }
         void altaContracte(VehiculosRenting vehiculosRenting)
         {
+            string dni, matricula, dataInici, dataFi;           
+            Cliente client;
+            Agencia agencia;
+            Vehiculo vehiculo;
+
+            agencia = vehiculosRenting.GetAgenciaByNombre("Agencia Lepanto");
+           
             
             
+            Console.WriteLine("Introdueix el Dni del client: " );
+            dni = Console.ReadLine();
+            client = vehiculosrenting.getClienteByNif(dni);
+            if(client== null)
+            {
+                Console.WriteLine("El client no existeix ");
 
+            }
+            else
+            {
+                Console.WriteLine("Benvingut/da sr/sra: " + client.Nombre);
+                Console.WriteLine("Introdueix la matrícula: ");
+                matricula = Console.ReadLine();
+                vehiculo = agencia.Flota.getVehiculoByMatricula(matricula);
+                if(vehiculo == null)
+                {
+                    Console.WriteLine("El vehicle no existeix");
+                }
+                else
+                {
+                    Console.Write("Introdueix data d'inici: ");
+                    dataInici = Console.ReadLine();
+                    Console.Write("Introdueix data final: ");
+                    dataFi = Console.ReadLine();
 
+                    //crear objecto
+                    ContratoAlquiler contrato=new ContratoAlquiler();
+                    contrato.Cliente= client;
+                    contrato.Vehiculo= vehiculo;
+                    contrato.FechaInicio = DateTime.Parse(dataInici);
+                    contrato.FechaFin=DateTime.Parse(dataFi);
+
+                    //guardar objeto
+                    agencia.addContrato( contrato );
+                }
+            }
         }
-
-
     }
 }
     

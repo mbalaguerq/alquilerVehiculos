@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace alquilerVehiculos
 {
-    internal class camion : vehiculo
+    internal class Camion : Vehiculo
     {
         private int kg;
 

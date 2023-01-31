@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace alquilerVehiculos
 {
-    internal class cliente
+    internal class Cliente
         //el atributs son privats, 
     {
         private string nif;

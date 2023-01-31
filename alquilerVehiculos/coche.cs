@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace alquilerVehiculos
 {
-    internal class coche: vehiculo
+    internal class Coche: Vehiculo
     {
         private int plazas;
         private int puertas;

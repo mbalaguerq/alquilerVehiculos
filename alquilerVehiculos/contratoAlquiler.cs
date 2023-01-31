@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace alquilerVehiculos
 {
-    internal class contratoAlquiler
+    internal class ContratoAlquiler
     {
         private DateTime fechaInicio;
         private DateTime fechaFin;
         private Decimal precioDia;
 
-        private vehiculo vehiculo;
-        private cliente cliente;
+        private Vehiculo vehiculo;
+        private Cliente cliente;
 
         public DateTime FechaInicio { get => fechaInicio; set => fechaInicio = value; }
         public DateTime FechaFin { get => fechaFin; set => fechaFin = value; }
         public Decimal PrecioDia { get => precioDia; set => precioDia = value; }
-        internal vehiculo Vehiculo { get => vehiculo; set => vehiculo = value; }
-        internal cliente Cliente { get => cliente; set => cliente = value; }
+        internal Vehiculo Vehiculo { get => vehiculo; set => vehiculo = value; }
+        internal Cliente Cliente { get => cliente; set => cliente = value; }
 
         public int nDias()
         {

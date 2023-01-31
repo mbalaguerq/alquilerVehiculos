@@ -135,8 +135,8 @@ namespace alquilerVehiculos
             //Hay q ue crear una agencia, esa agencia tiene que tener una flota.
             //Pedir datos de cliente. 
             //Buscar si existe en clientes.
-            //Pedir vehiculo por ma´trícula
-            //Poner el contrato en un Atrraylist
+            //Pedir vehiculo por matrícula
+            //Poner el contrato en un Arraylist
             //Listar contratos
 
 
