@@ -34,6 +34,7 @@ namespace alquilerVehiculos
             Console.WriteLine("3. Llistar vehicles");
             Console.WriteLine("4. Llistar cotxes");
             Console.WriteLine("5. Nou Contracte");
+            Console.WriteLine("6. Llista de Contractes");
 
         }
         string DemanarOpcioMenu()
@@ -43,7 +44,7 @@ namespace alquilerVehiculos
             {
                 Console.Write("Sel.lecciona opció: ");
                 opcio = Console.ReadLine();
-            } while (!"01234".Contains(opcio));
+            } while (!"0123456".Contains(opcio));
             return opcio;
         }
         bool ExecutarMenu(String opcio)
@@ -65,6 +66,9 @@ namespace alquilerVehiculos
                     break;
                 case "5":
                     altaContracte(vehiculosrenting);
+                    break;
+                case "6":
+                    llistaContractes(vehiculosrenting);
                     break;
                 case "0":
                     salir = true;
@@ -98,13 +102,13 @@ namespace alquilerVehiculos
             Flota flota = new Flota();
             flota.NombreZona = "Zaragoza";
 
-            
+
 
             flota.addVehiculos(coche1);//Llamamos al método addVehiculos de la clase flota
             flota.addVehiculos(moto1);
             flota.addVehiculos(camion1);
 
-            
+
             if (vehiculosRenting.addFlota(flota) >= 0)
             {
                 Console.WriteLine("\nLa flota se ha añadido correctamente\n");
@@ -178,19 +182,20 @@ namespace alquilerVehiculos
         }
         void altaContracte(VehiculosRenting vehiculosRenting)
         {
-            string dni, matricula, dataInici, dataFi;           
+            string dni, matricula, dataInici, dataFi;
             Cliente client;
             Agencia agencia;
             Vehiculo vehiculo;
+            int precio = 100;
 
             agencia = vehiculosRenting.GetAgenciaByNombre("Agencia Lepanto");
-           
-            
-            
-            Console.WriteLine("Introdueix el Dni del client: " );
+
+
+
+            Console.WriteLine("Introdueix el Dni del client: ");
             dni = Console.ReadLine();
             client = vehiculosrenting.getClienteByNif(dni);
-            if(client== null)
+            if (client == null)
             {
                 Console.WriteLine("El client no existeix ");
 
@@ -201,7 +206,7 @@ namespace alquilerVehiculos
                 Console.WriteLine("Introdueix la matrícula: ");
                 matricula = Console.ReadLine();
                 vehiculo = agencia.Flota.getVehiculoByMatricula(matricula);
-                if(vehiculo == null)
+                if (vehiculo == null)
                 {
                     Console.WriteLine("El vehicle no existeix");
                 }
@@ -213,16 +218,44 @@ namespace alquilerVehiculos
                     dataFi = Console.ReadLine();
 
                     //crear objecto
-                    ContratoAlquiler contrato=new ContratoAlquiler();
-                    contrato.Cliente= client;
-                    contrato.Vehiculo= vehiculo;
+                    ContratoAlquiler contrato = new ContratoAlquiler();
+                    contrato.Cliente = client;
+                    contrato.Vehiculo = vehiculo;
+                    contrato.PrecioDia = precio;
                     contrato.FechaInicio = DateTime.Parse(dataInici);
-                    contrato.FechaFin=DateTime.Parse(dataFi);
+                    contrato.FechaFin = DateTime.Parse(dataFi);
 
                     //guardar objeto
-                    agencia.addContrato( contrato );
+                    agencia.addContrato(contrato);
                 }
             }
+        }
+        void llistaContractes(VehiculosRenting vehiculosrenting)
+        {
+
+
+            
+            Console.WriteLine();
+
+            //Doble bucle. El primer busca dins totes les agencies. El segon dins de tots els contractes
+            foreach (Agencia agencia in vehiculosrenting.Agencias)
+            {
+                foreach (ContratoAlquiler cont in agencia.getContratos())
+                {
+                    Console.WriteLine("Contracte de lloguer agencia " + agencia.Nombre);
+                    Console.WriteLine("sr/sra. " +  cont.Cliente);
+                    Console.WriteLine("Vehicle " +  cont.Vehiculo);
+                    Console.WriteLine("Data inici: " + cont.FechaInicio);
+                    Console.WriteLine("Data de retorn:" + cont.FechaFin);
+                    Console.WriteLine("Total dies lloguer: ");
+                    Console.WriteLine("preu per dia: " + cont.PrecioDia);
+                    Console.WriteLine("Total Dies lloguer:" + cont.nDias());
+                    Console.WriteLine("Preu Total " + cont.costeTotal() + " € ");
+                    Console.WriteLine();
+
+                }
+            }
+            Console.WriteLine();
         }
     }
 }

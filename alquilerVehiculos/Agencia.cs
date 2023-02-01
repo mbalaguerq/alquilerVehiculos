@@ -29,8 +29,12 @@ namespace alquilerVehiculos
         public string Nombre { get => nombre; set => nombre = value; }
         public Flota Flota { get => flota; set => flota = value; }
         public ArrayList ListaContratos { get => listaContratos;}
-        
 
+        
+        public ArrayList getContratos()
+        {
+            return listaContratos;
+        }
 
     }
 }

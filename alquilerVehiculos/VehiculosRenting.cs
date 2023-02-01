@@ -41,13 +41,13 @@ namespace alquilerVehiculos
         }
         public int addAgencia(Agencia agencia)//mètode per afegir agencies 
         {
-            return ListaClientes.Add(agencia);
+            return agencias.Add(agencia);
         }
 
         //getters i setters
         public Cliente getClienteByNif(string dni)//mètode per buscar clients per Dni 
         {
-            foreach(Cliente cliente in ListaClientes)
+            foreach(Cliente cliente in listaClientes)
             {
                 if (cliente.Nif.Equals(nif))
                 {
