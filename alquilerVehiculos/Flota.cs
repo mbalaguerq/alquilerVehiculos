@@ -44,20 +44,17 @@ namespace alquilerVehiculos
             }    
             return false;//si no troba la matrícula retornem false
         }
-
         public Vehiculo getVehiculoByMatricula(string matricula)
         {
             foreach (Vehiculo veh in Vehiculos)
             {
                 if (veh.Matricula.Equals(matricula))
-                {
-                    
+                {  
                     return veh;//si el troba retornem el vehicle
                 }
             }
             return null;//si no troba la matrícula retornem false
         }
-
         //Get vehiculos retorna l'arraylist de vehicles.
         public ArrayList getVehiculos()
         {

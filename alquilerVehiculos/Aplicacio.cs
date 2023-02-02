@@ -186,7 +186,7 @@ namespace alquilerVehiculos
             Cliente client;
             Agencia agencia;
             Vehiculo vehiculo;
-            int precio = 100;
+            Decimal precio;
 
             agencia = vehiculosRenting.GetAgenciaByNombre("Agencia Lepanto");
 
@@ -203,7 +203,7 @@ namespace alquilerVehiculos
             else
             {
                 Console.WriteLine("Benvingut/da sr/sra: " + client.Nombre);
-                Console.WriteLine("Introdueix la matrícula: ");
+                Console.WriteLine("\nIntrodueix la matrícula: ");
                 matricula = Console.ReadLine();
                 vehiculo = agencia.Flota.getVehiculoByMatricula(matricula);
                 if (vehiculo == null)
@@ -216,6 +216,8 @@ namespace alquilerVehiculos
                     dataInici = Console.ReadLine();
                     Console.Write("Introdueix data final: ");
                     dataFi = Console.ReadLine();
+                    Console.Write("Preu: ");
+                    precio = Decimal.Parse( Console.ReadLine());
 
                     //crear objecto
                     ContratoAlquiler contrato = new ContratoAlquiler();
@@ -231,23 +233,19 @@ namespace alquilerVehiculos
             }
         }
         void llistaContractes(VehiculosRenting vehiculosrenting)
-        {
-
-
-            
+        {           
             Console.WriteLine();
 
             //Doble bucle. El primer busca dins totes les agencies. El segon dins de tots els contractes
             foreach (Agencia agencia in vehiculosrenting.Agencias)
             {
-                foreach (ContratoAlquiler cont in agencia.getContratos())
+                foreach (ContratoAlquiler cont in agencia.ListaContratos)
                 {
                     Console.WriteLine("Contracte de lloguer agencia " + agencia.Nombre);
-                    Console.WriteLine("sr/sra. " +  cont.Cliente);
-                    Console.WriteLine("Vehicle " +  cont.Vehiculo);
+                    Console.WriteLine("sr/sra. " +  cont.Cliente.Nombre);
+                    Console.WriteLine("Vehicle " +  cont.Vehiculo.Matricula);
                     Console.WriteLine("Data inici: " + cont.FechaInicio);
                     Console.WriteLine("Data de retorn:" + cont.FechaFin);
-                    Console.WriteLine("Total dies lloguer: ");
                     Console.WriteLine("preu per dia: " + cont.PrecioDia);
                     Console.WriteLine("Total Dies lloguer:" + cont.nDias());
                     Console.WriteLine("Preu Total " + cont.costeTotal() + " € ");

@@ -49,7 +49,7 @@ namespace alquilerVehiculos
         {
             foreach(Cliente cliente in listaClientes)
             {
-                if (cliente.Nif.Equals(nif))
+                if (cliente.Nif.Equals(dni))
                 {
                     return cliente;
                 }                
